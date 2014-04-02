@@ -1,24 +1,31 @@
 package com.martin.jtests.Lists;
 
-public class Entry {
-	private String name;
+import java.io.Serializable;
+
+public class Entry implements Serializable {
+
+	private static final long serialVersionUID = -1322370889922873814L;
+	
+	private String title;
 	private int folder;
-	private int register;
+	private int index;
 	private int page;
+	private Tags tags;
 	
-	public Entry(String name, int folder, int register, int page) {
+	public Entry(String title, int folder, int index, int page, Tags tags) {
 		super();
-		this.name = name;
+		this.title = title;
 		this.folder = folder;
-		this.register = register;
+		this.index = index;
 		this.page = page;
+		this.tags = tags;
 	}
 	
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public int getFolder() {
 		return folder;
@@ -26,17 +33,23 @@ public class Entry {
 	public void setFolder(int folder) {
 		this.folder = folder;
 	}
-	public int getRegister() {
-		return register;
+	public int getIndex() {
+		return index;
 	}
-	public void setRegister(int register) {
-		this.register = register;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 	public int getPage() {
 		return page;
 	}
 	public void setPage(int page) {
 		this.page = page;
+	}
+	public Tags getTags() {
+		return tags;
+	}
+	public void setTags(Tags tags) {
+		this.tags = tags;
 	}
 	
 }
