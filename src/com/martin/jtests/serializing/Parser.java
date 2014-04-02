@@ -1,0 +1,29 @@
+package com.martin.jtests.serializing;
+
+public class Parser {
+	
+	public static Action getAction(String input) {
+		String[] parts = input.split(" ");
+		String sCommand = parts[0];
+		String data = "";
+		
+		for (int i = 1; i < parts.length; i++) {
+			data += parts[i] + " ";
+		}
+		
+		data.trim();
+		
+		Commands cCommand = null;
+		for (Commands act : Commands.values()) {
+			if (sCommand.toLowerCase().toString().contentEquals(((Commands) act).name().toLowerCase())) {
+				cCommand = act;
+			}
+		}
+		
+		if (cCommand != null) {
+			return new Action(cCommand, data);
+		}
+		return new Action(Commands.UNKNOWN, data);
+	}
+	
+}

@@ -1,4 +1,4 @@
-package com.martin.jtests.Lists;
+package com.martin.jtests.lists;
 
 import java.io.Serializable;
 import java.util.ArrayList;

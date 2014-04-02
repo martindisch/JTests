@@ -1,4 +1,4 @@
-package com.martin.jtests.Lists;
+package com.martin.jtests.lists;
 
 public enum Protocol {
 	ADD,
