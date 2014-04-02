@@ -1,10 +1,9 @@
 package com.martin.jtests.serializing.testing;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.martin.jtests.serializing.Action;
 import com.martin.jtests.serializing.Commands;
 import com.martin.jtests.serializing.Parser;
 
@@ -19,8 +18,6 @@ public class ParserTest {
 	@Test
 	public void testWrite() {
 		assertEquals("Command", Parser.getAction("WRITE hello man").getCommand(), Commands.WRITE);
-		System.out.println(Parser.getAction("Write hello man").getData());
-		System.out.println("hello man");
 		assertEquals("Data", Parser.getAction("WRITE hello man").getData(), "hello man");
 	}
 	

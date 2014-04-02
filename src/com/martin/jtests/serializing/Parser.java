@@ -11,11 +11,11 @@ public class Parser {
 			data += parts[i] + " ";
 		}
 		
-		data.trim();
+		data = data.trim();
 		
 		Commands cCommand = null;
 		for (Commands act : Commands.values()) {
-			if (sCommand.toLowerCase().toString().contentEquals(((Commands) act).name().toLowerCase())) {
+			if (sCommand.toLowerCase().contentEquals(((Commands) act).name().toLowerCase())) {
 				cCommand = act;
 			}
 		}

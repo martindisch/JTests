@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static final int size = 100000;
+	private static final int size = 1000000;
 	private static ArrayList<Entry> entries;
 
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Main {
 		long millis = System.currentTimeMillis();
 		Random r = new Random();
 		RandomStrings rs = new RandomStrings();
-		entries = new ArrayList<Entry>();
+		entries = new ArrayList<Entry>(size);
 		String title;
 		int folder;
 		int index;
