@@ -16,10 +16,12 @@ import com.martin.jtests.lists.Tags;
 
 public class IndexManager {
 	private ArrayList<Entry> entries;
+	Scanner sc;
 
-	public IndexManager() {
+	public IndexManager(Scanner sc) {
 		super();
 		entries = new ArrayList<Entry>();
+		this.sc = sc;
 	}
 
 	public void generate(int size) {
@@ -91,9 +93,7 @@ public class IndexManager {
 		}
 	}
 
-	@SuppressWarnings("resource")
 	public void add(String title) {
-		Scanner sc = new Scanner(System.in);
 		String input;
 		Tags tags = new Tags();
 
@@ -134,6 +134,28 @@ public class IndexManager {
 			System.out.println("[" + (i + 1) + "]   "
 					+ results.get(i).getTitle());
 		}
+		
+		System.out.println("\nWhich result do you want to display?");
+		int iResult = sc.nextInt();
+		iResult--;
+		
+		Entry result = results.get(iResult);
+		
+		System.out.println("\nTitle:  " + result.getTitle());
+		if (result.getTags().getList().size() > 0) {
+			System.out.print("Tags:   ");
+			for (String tag : result.getTags().getList()) {
+				if (!tag.equals(result.getTags().getList().get(result.getTags().getList().size()))) {
+					System.out.println(tag + ", ");
+				}
+				else {
+					System.out.println(tag);
+				}
+			}
+		}
+		System.out.println("Folder: " + result.getFolder());
+		System.out.println("Index:  " + result.getIndex());
+		System.out.println("Page:   " + result.getPage() + "\n");
 	}
 
 	private void showMem() {

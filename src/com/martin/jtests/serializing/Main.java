@@ -7,8 +7,8 @@ public class Main {
 	private static IndexManager manager;
 
 	public static void main(String[] args) {
-		manager = new IndexManager();
 		Scanner sc = new Scanner(System.in);
+		manager = new IndexManager(sc);
 		String input;
 		displayCommands();
 		

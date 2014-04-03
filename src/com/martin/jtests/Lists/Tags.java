@@ -26,4 +26,8 @@ public class Tags implements Serializable {
 	public void addTag(String tag) {
 		tags.add(tag);
 	}
+	
+	public ArrayList<String> getList() {
+		return tags;
+	}
 }
