@@ -97,26 +97,32 @@ public class IndexManager {
 		String input;
 		Tags tags = new Tags();
 
-		System.out.println("What folder is this entry in?");
-		int folder = sc.nextInt();
-		System.out.println("What index is this entry in?");
-		int index = sc.nextInt();
-		System.out.println("Which page is this entry?");
-		int page = sc.nextInt();
+		try {
+			System.out.println("What folder is this entry in?");
+			int folder = Integer.parseInt(sc.nextLine());
+			System.out.println("What index is this entry in?");
+			int index = Integer.parseInt(sc.nextLine());
+			System.out.println("Which page is this entry?");
+			int page = Integer.parseInt(sc.nextLine());
 
-		System.out.println("You can add a tag if you want. If not, type 'end'");
-		while (!(input = sc.nextLine()).contentEquals("end")) {
-			if (!input.contentEquals("")) {
-				tags.addTag(input);
-				System.out
-						.println("You can add another tag if you want. Once you're done, type 'end'");
+			System.out
+					.println("You can add a tag if you want. If not, type 'end'");
+			while (!(input = sc.nextLine()).contentEquals("end")) {
+				if (!input.contentEquals("")) {
+					tags.addTag(input);
+					System.out
+							.println("You can add another tag if you want. Once you're done, type 'end'");
+				}
 			}
+
+			Entry entry = new Entry(title, folder, index, page, tags);
+			entries.add(entry);
+
+			System.out.println("Your entry has been added successfully");
+		} catch (NumberFormatException e) {
+			System.out
+					.println("You failed to enter a simple number, entry has not been added");
 		}
-
-		Entry entry = new Entry(title, folder, index, page, tags);
-		entries.add(entry);
-
-		System.out.println("Your entry has been added successfully");
 	}
 
 	public void search(String term) {
@@ -134,28 +140,35 @@ public class IndexManager {
 			System.out.println("[" + (i + 1) + "]   "
 					+ results.get(i).getTitle());
 		}
-		
-		System.out.println("\nWhich result do you want to display?");
-		int iResult = sc.nextInt();
-		iResult--;
-		
-		Entry result = results.get(iResult);
-		
-		System.out.println("\nTitle:  " + result.getTitle());
-		if (result.getTags().getList().size() > 0) {
-			System.out.print("Tags:   ");
-			for (String tag : result.getTags().getList()) {
-				if (!tag.equals(result.getTags().getList().get(result.getTags().getList().size() - 1))) {
-					System.out.print(tag + ", ");
-				}
-				else {
-					System.out.println(tag);
+
+		try {
+			System.out.println("\nWhich result do you want to display?");
+			int iResult = Integer.parseInt(sc.nextLine());
+			iResult--;
+			
+			Entry result = results.get(iResult);
+
+			System.out.println("\nTitle:  " + result.getTitle());
+			if (result.getTags().getList().size() > 0) {
+				System.out.print("Tags:   ");
+				for (String tag : result.getTags().getList()) {
+					if (!tag.equals(result.getTags().getList()
+							.get(result.getTags().getList().size() - 1))) {
+						System.out.print(tag + ", ");
+					} else {
+						System.out.println(tag);
+					}
 				}
 			}
+			System.out.println("Folder: " + result.getFolder());
+			System.out.println("Index:  " + result.getIndex());
+			System.out.println("Page:   " + result.getPage());
+		} catch (NumberFormatException e) {
+			System.out.println("Input not a number, search aborted");
 		}
-		System.out.println("Folder: " + result.getFolder());
-		System.out.println("Index:  " + result.getIndex());
-		System.out.println("Page:   " + result.getPage());
+		catch (IndexOutOfBoundsException e) {
+			System.out.println("Non-existent result, search aborted");
+		}
 	}
 
 	private void showMem() {

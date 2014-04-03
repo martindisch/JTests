@@ -15,6 +15,7 @@ public class Main {
 
 		while (!(input = sc.nextLine()).toLowerCase().contentEquals("end")) {
 			if (!input.contentEquals("")) {
+				System.out.println("Your input: " + input);
 				Action action = Parser.getAction(input);
 				doAction(action);
 				System.out.print("\n");
