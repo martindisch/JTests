@@ -16,6 +16,7 @@ public class Main {
 			if (!input.contentEquals("")) {
 				Action action = Parser.getAction(input);
 				doAction(action);
+				System.out.println("\n");
 			}
 		}
 

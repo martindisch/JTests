@@ -155,7 +155,7 @@ public class IndexManager {
 		}
 		System.out.println("Folder: " + result.getFolder());
 		System.out.println("Index:  " + result.getIndex());
-		System.out.println("Page:   " + result.getPage() + "\n");
+		System.out.println("Page:   " + result.getPage());
 	}
 
 	private void showMem() {
