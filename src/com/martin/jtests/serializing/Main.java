@@ -50,8 +50,17 @@ public class Main {
 
 	private static void displayCommands() {
 		System.out.println("\nAvailable commands:\n");
+		System.out.println(" - End (Exit the application)");
 		System.out
-				.println("Generate [amount]\nWrite [name]\nRead [name]\nAdd [title]\nSearch [part of title or tag]\nHelp");
+				.println(" - Generate [amount] (Add a number of random Entries with random titles and tags to the currently loaded collection)");
+		System.out
+				.println(" - Write [name] (Save the currently loaded collection to disk)");
+		System.out.println(" - Read [name] (Load a collection from a file)");
+		System.out
+				.println(" - Add [title] (Add a new entry to the currently loaded collection)");
+		System.out
+				.println(" - Search [part of title or tag] (Search the currently loaded collection)");
+		System.out.println(" - Help (Display this help)");
 	}
 
 }
