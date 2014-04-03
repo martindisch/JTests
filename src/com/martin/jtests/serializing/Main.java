@@ -3,7 +3,7 @@ package com.martin.jtests.serializing;
 import java.util.Scanner;
 
 public class Main {
-	
+
 	private static IndexManager manager;
 
 	public static void main(String[] args) {
@@ -11,13 +11,14 @@ public class Main {
 		manager = new IndexManager(sc);
 		String input;
 		displayCommands();
-		
+
 		while (!(input = sc.nextLine()).toLowerCase().contentEquals("end")) {
-			Action action = Parser.getAction(input);
-			doAction(action);
-			//System.out.println("\nAvailable commands:\n\nGenerate [amount]\nWrite [name]\nRead [name]\nAdd [title]\nSearch [part of title or tag]");
+			if (!input.contentEquals("")) {
+				Action action = Parser.getAction(input);
+				doAction(action);
+			}
 		}
-		
+
 		sc.close();
 	}
 
@@ -46,10 +47,11 @@ public class Main {
 			break;
 		}
 	}
-	
+
 	private static void displayCommands() {
 		System.out.println("\nAvailable commands:\n");
-		System.out.println("Generate [amount]\nWrite [name]\nRead [name]\nAdd [title]\nSearch [part of title or tag]\nHelp\n");
+		System.out
+				.println("Generate [amount]\nWrite [name]\nRead [name]\nAdd [title]\nSearch [part of title or tag]\nHelp\n");
 	}
 
 }

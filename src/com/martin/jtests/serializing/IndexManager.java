@@ -145,8 +145,8 @@ public class IndexManager {
 		if (result.getTags().getList().size() > 0) {
 			System.out.print("Tags:   ");
 			for (String tag : result.getTags().getList()) {
-				if (!tag.equals(result.getTags().getList().get(result.getTags().getList().size()))) {
-					System.out.println(tag + ", ");
+				if (!tag.equals(result.getTags().getList().get(result.getTags().getList().size() - 1))) {
+					System.out.print(tag + ", ");
 				}
 				else {
 					System.out.println(tag);
