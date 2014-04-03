@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Tags implements Serializable {
 
-	private static final long serialVersionUID = 4755597217915780438L;
+	private static final long serialVersionUID = -1132753958868939343L;
 	private ArrayList<String> tags;
 	
 	public Tags() {
@@ -16,7 +16,7 @@ public class Tags implements Serializable {
 	public boolean searchTags(String term) {
 		boolean contains = false;
 		for (String act : tags) {
-			if (act.contains(term)) {
+			if (act.toLowerCase().contains(term.toLowerCase())) {
 				contains = true;
 			}
 		}

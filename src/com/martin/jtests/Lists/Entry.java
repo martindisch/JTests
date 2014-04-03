@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Entry implements Serializable {
 
-	private static final long serialVersionUID = -1322370889922873814L;
+	private static final long serialVersionUID = 706686267751133431L;
 	
 	private String title;
 	private int folder;
