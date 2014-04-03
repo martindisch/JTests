@@ -14,12 +14,9 @@ public class Main {
 		System.out.print("\n");
 
 		while (!(input = sc.nextLine()).toLowerCase().contentEquals("end")) {
-			if (!input.contentEquals("")) {
-				System.out.println("Your input: " + input);
-				Action action = Parser.getAction(input);
-				doAction(action);
-				System.out.print("\n");
-			}
+			Action action = Parser.getAction(input);
+			doAction(action);
+			System.out.print("\n");
 		}
 
 		sc.close();
