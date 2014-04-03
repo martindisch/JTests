@@ -11,6 +11,7 @@ public class Main {
 		manager = new IndexManager(sc);
 		String input;
 		displayCommands();
+		System.out.println("\n");
 
 		while (!(input = sc.nextLine()).toLowerCase().contentEquals("end")) {
 			if (!input.contentEquals("")) {
