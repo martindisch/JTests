@@ -52,7 +52,7 @@ public class Main {
 	private static void displayCommands() {
 		System.out.println("\nAvailable commands:\n");
 		System.out
-				.println("Generate [amount]\nWrite [name]\nRead [name]\nAdd [title]\nSearch [part of title or tag]\nHelp\n");
+				.println("Generate [amount]\nWrite [name]\nRead [name]\nAdd [title]\nSearch [part of title or tag]\nHelp");
 	}
 
 }
