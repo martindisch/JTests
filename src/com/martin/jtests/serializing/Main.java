@@ -11,13 +11,13 @@ public class Main {
 		manager = new IndexManager(sc);
 		String input;
 		displayCommands();
-		System.out.println("\n");
+		System.out.print("\n");
 
 		while (!(input = sc.nextLine()).toLowerCase().contentEquals("end")) {
 			if (!input.contentEquals("")) {
 				Action action = Parser.getAction(input);
 				doAction(action);
-				System.out.println("\n");
+				System.out.print("\n");
 			}
 		}
 
