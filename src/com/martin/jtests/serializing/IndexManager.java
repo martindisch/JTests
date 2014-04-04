@@ -135,45 +135,49 @@ public class IndexManager {
 			}
 		}
 
-		System.out.println(results.size() + " results:\n");
-		for (int i = 0; i < results.size(); i++) {
-			if (!results.get(i).getTitle().toLowerCase().contains(term.toLowerCase())) {
-				System.out.println("[" + (i + 1) + "]   "
-						+ results.get(i).getTitle() + " (occurrence in tags)");
-			}
-			else {
-				System.out.println("[" + (i + 1) + "]   "
-						+ results.get(i).getTitle());
-			}
-		}
-
-		try {
-			System.out.println("\nWhich result do you want to display?");
-			int iResult = Integer.parseInt(sc.nextLine());
-			iResult--;
-			
-			Entry result = results.get(iResult);
-
-			System.out.println("\nTitle:  " + result.getTitle());
-			if (result.getTags().getList().size() > 0) {
-				System.out.print("Tags:   ");
-				for (String tag : result.getTags().getList()) {
-					if (!tag.equals(result.getTags().getList()
-							.get(result.getTags().getList().size() - 1))) {
-						System.out.print(tag + ", ");
-					} else {
-						System.out.println(tag);
-					}
+		if (results.size() > 0) {
+			System.out.println(results.size() + " results:\n");
+			for (int i = 0; i < results.size(); i++) {
+				if (!results.get(i).getTitle().toLowerCase()
+						.contains(term.toLowerCase())) {
+					System.out.println("[" + (i + 1) + "]   "
+							+ results.get(i).getTitle()
+							+ " (occurrence in tags)");
+				} else {
+					System.out.println("[" + (i + 1) + "]   "
+							+ results.get(i).getTitle());
 				}
 			}
-			System.out.println("Folder: " + result.getFolder());
-			System.out.println("Index:  " + result.getIndex());
-			System.out.println("Page:   " + result.getPage());
-		} catch (NumberFormatException e) {
-			System.out.println("Input not a number, search aborted");
-		}
-		catch (IndexOutOfBoundsException e) {
-			System.out.println("Non-existent result, search aborted");
+
+			try {
+				System.out.println("\nWhich result do you want to display?");
+				int iResult = Integer.parseInt(sc.nextLine());
+				iResult--;
+
+				Entry result = results.get(iResult);
+
+				System.out.println("\nTitle:  " + result.getTitle());
+				if (result.getTags().getList().size() > 0) {
+					System.out.print("Tags:   ");
+					for (String tag : result.getTags().getList()) {
+						if (!tag.equals(result.getTags().getList()
+								.get(result.getTags().getList().size() - 1))) {
+							System.out.print(tag + ", ");
+						} else {
+							System.out.println(tag);
+						}
+					}
+				}
+				System.out.println("Folder: " + result.getFolder());
+				System.out.println("Index:  " + result.getIndex());
+				System.out.println("Page:   " + result.getPage());
+			} catch (NumberFormatException e) {
+				System.out.println("Input not a number, search aborted");
+			} catch (IndexOutOfBoundsException e) {
+				System.out.println("Non-existent result, search aborted");
+			}
+		} else {
+			System.out.println("No results");
 		}
 	}
 
