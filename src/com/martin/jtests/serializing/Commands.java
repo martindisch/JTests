@@ -7,5 +7,6 @@ public enum Commands {
 	ADD,
 	SEARCH,
 	HELP,
+	LIST,
 	UNKNOWN
 }

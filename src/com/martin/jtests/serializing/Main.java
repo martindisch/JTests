@@ -39,6 +39,9 @@ public class Main {
 		case SEARCH:
 			manager.search(action.getData());
 			break;
+		case LIST:
+			manager.list(action.getData());
+			break;
 		case HELP:
 			displayCommands();
 			break;
@@ -60,6 +63,8 @@ public class Main {
 				.println(" - Add [title] (Add a new entry to the currently loaded collection)");
 		System.out
 				.println(" - Search [part of title or tag] (Search the currently loaded collection)");
+		System.out
+				.println(" - List [start] [end (optional)] (List entries [start] to [end]");
 		System.out.println(" - Help (Display this help)");
 	}
 

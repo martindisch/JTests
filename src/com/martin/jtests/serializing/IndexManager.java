@@ -180,6 +180,60 @@ public class IndexManager {
 			System.out.println("No results");
 		}
 	}
+	
+	public void list(String data) {
+		String[] parts = data.split(" ");
+		int start = 0;
+		int end = 0;
+		try {
+			if (Integer.parseInt(parts[0]) > entries.size()) {
+				throw new IndexOutOfBoundsException();
+			}
+			start = Integer.parseInt(parts[0]) - 1;
+			if (parts.length > 1) {
+				if (Integer.parseInt(parts[1])  > entries.size()) {
+					throw new IndexOutOfBoundsException();
+				}
+				end = Integer.parseInt(parts[1]) - 1;
+			}
+			else {
+				end = entries.size() - 1;
+			}
+			
+			for (int i = start; i < end + 1; i++) {
+				System.out.println("[" + (i + 1) + "]   "
+						+ entries.get(i).getTitle());
+			}
+			
+			System.out.println("\nWhich result do you want to display?");
+			int iResult = Integer.parseInt(sc.nextLine());
+			iResult--;
+
+			Entry result = entries.get(iResult);
+
+			System.out.println("\nTitle:  " + result.getTitle());
+			if (result.getTags().getList().size() > 0) {
+				System.out.print("Tags:   ");
+				for (String tag : result.getTags().getList()) {
+					if (!tag.equals(result.getTags().getList()
+							.get(result.getTags().getList().size() - 1))) {
+						System.out.print(tag + ", ");
+					} else {
+						System.out.println(tag);
+					}
+				}
+			}
+			System.out.println("Folder: " + result.getFolder());
+			System.out.println("Index:  " + result.getIndex());
+			System.out.println("Page:   " + result.getPage());
+		}
+		catch (NumberFormatException e) {
+			System.out.println("Input not a number, listing aborted");
+		}
+		catch (IndexOutOfBoundsException e) {
+			System.out.println("Input is out of bounds");
+		}
+	}
 
 	private void showMem() {
 		Runtime rt = Runtime.getRuntime();
