@@ -14,9 +14,14 @@ public class Main {
 		System.out.print("\n");
 
 		while (!(input = sc.nextLine()).toLowerCase().contentEquals("end")) {
-			Action action = Parser.getAction(input);
-			doAction(action);
-			System.out.print("\n");
+			try {
+				Action action = Parser.getAction(input);
+				doAction(action);
+				System.out.print("\n");
+			}
+			catch (Exception e) {
+				System.out.println("A strange exception has just occurred: " + e.getMessage() + "\nBut don't worry, business as usual\n");
+			}
 		}
 
 		sc.close();
