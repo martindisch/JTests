@@ -140,11 +140,11 @@ public class IndexManager {
 			for (int i = 0; i < results.size(); i++) {
 				if (!results.get(i).getTitle().toLowerCase()
 						.contains(term.toLowerCase())) {
-					System.out.println("[" + (i + 1) + "]   "
+					System.out.println("[" + (entries.indexOf(results.get(i)) + 1) + "]   "
 							+ results.get(i).getTitle()
 							+ " (occurrence in tags)");
 				} else {
-					System.out.println("[" + (i + 1) + "]   "
+					System.out.println("[" + (entries.indexOf(results.get(i)) + 1) + "]   "
 							+ results.get(i).getTitle());
 				}
 			}
