@@ -13,14 +13,14 @@ public class Main {
 		displayCommands();
 		System.out.print("\n");
 
-		while (!(input = sc.nextLine()).toLowerCase().contentEquals("end")) {
+		while (!(input = Io.in()).toLowerCase().contentEquals("end")) {
 			try {
 				Action action = Parser.getAction(input);
 				doAction(action);
 				System.out.print("\n");
 			}
 			catch (Exception e) {
-				System.out.println("A strange exception has just occurred: " + e.getMessage() + "\nBut don't worry, business as usual\n");
+				Io.out("A strange exception has just occurred: " + e.getMessage() + "\nBut don't worry, business as usual\n");
 			}
 		}
 
@@ -57,28 +57,28 @@ public class Main {
 			displayCommands();
 			break;
 		case UNKNOWN:
-			System.out.println("Unknown command");
+			Io.out("Unknown command");
 			break;
 		}
 	}
 
 	private static void displayCommands() {
-		System.out.println("\nAvailable commands:\n");
-		System.out.println(" - End (Exit the application)");
+		Io.out("\nAvailable commands:\n");
+		Io.out(" - End (Exit the application)");
 		System.out
 				.println(" - Generate [amount] (Add a number of random Entries with random titles and tags to the currently loaded collection)");
 		System.out
 				.println(" - Write [name] (Save the currently loaded collection to disk)");
-		System.out.println(" - Read [name] (Load a collection from a file)");
+		Io.out(" - Read [name] (Load a collection from a file)");
 		System.out
 				.println(" - Add [title] (Add a new entry to the currently loaded collection)");
 		System.out
 				.println(" - Search [part of title or tag] (Search the currently loaded collection)");
 		System.out
 				.println(" - List [start] [end (optional)] (List entries [start] to [end]");
-		System.out.println(" - Delete [number] (Delete this entry)");
-		System.out.println(" - Display [number] (Display this entry)");
-		System.out.println(" - Help (Display this help)");
+		Io.out(" - Delete [number] (Delete this entry)");
+		Io.out(" - Display [number] (Display this entry)");
+		Io.out(" - Help (Display this help)");
 	}
 
 }

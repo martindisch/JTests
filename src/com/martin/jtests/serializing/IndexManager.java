@@ -25,7 +25,7 @@ public class IndexManager {
 	}
 
 	public void generate(int size) {
-		System.out.println("Filling list of size " + size);
+		Io.out("Filling list of size " + size);
 		long millis = System.currentTimeMillis();
 		Random r = new Random();
 		RandomStrings rs = new RandomStrings();
@@ -48,7 +48,7 @@ public class IndexManager {
 			newOne = new Entry(title, folder, index, page, tags);
 			entries.add(newOne);
 		}
-		System.out.println("List filled in "
+		Io.out("List filled in "
 				+ (System.currentTimeMillis() - millis) + "ms");
 
 		showMem();
@@ -60,15 +60,15 @@ public class IndexManager {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 			long millis = System.currentTimeMillis();
-			System.out.println("Writing to disk...");
+			Io.out("Writing to disk...");
 			oos.writeObject(entries);
 			oos.close();
-			System.out.println("Data has been written successfully in "
+			Io.out("Data has been written successfully in "
 					+ (System.currentTimeMillis() - millis) + "ms");
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
+			Io.out("File not found");
 		} catch (IOException e) {
-			System.out.println("Some IOException just happened");
+			Io.out("Some IOException just happened");
 		}
 	}
 
@@ -79,15 +79,15 @@ public class IndexManager {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			long millis = System.currentTimeMillis();
-			System.out.println("Reading from disk...");
+			Io.out("Reading from disk...");
 			entries = (ArrayList<Entry>) ois.readObject();
 			ois.close();
-			System.out.println("Data has been read successfully in "
+			Io.out("Data has been read successfully in "
 					+ (System.currentTimeMillis() - millis) + "ms");
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
+			Io.out("File not found");
 		} catch (IOException e) {
-			System.out.println("Some IOException just happened");
+			Io.out("Some IOException just happened");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -98,16 +98,16 @@ public class IndexManager {
 		Tags tags = new Tags();
 
 		try {
-			System.out.println("What folder is this entry in?");
-			int folder = Integer.parseInt(sc.nextLine());
-			System.out.println("What index is this entry in?");
-			int index = Integer.parseInt(sc.nextLine());
-			System.out.println("Which page is this entry?");
-			int page = Integer.parseInt(sc.nextLine());
+			Io.out("What folder is this entry in?");
+			int folder = Integer.parseInt(Io.in());
+			Io.out("What index is this entry in?");
+			int index = Integer.parseInt(Io.in());
+			Io.out("Which page is this entry?");
+			int page = Integer.parseInt(Io.in());
 
 			System.out
 					.println("You can add a tag if you want. If not, type 'end'");
-			while (!(input = sc.nextLine()).contentEquals("end")) {
+			while (!(input = Io.in()).contentEquals("end")) {
 				if (!input.contentEquals("")) {
 					tags.addTag(input);
 					System.out
@@ -118,7 +118,7 @@ public class IndexManager {
 			Entry entry = new Entry(title, folder, index, page, tags);
 			entries.add(entry);
 
-			System.out.println("Your entry has been added successfully");
+			Io.out("Your entry has been added successfully");
 		} catch (NumberFormatException e) {
 			System.out
 					.println("You failed to enter a simple number, entry has not been added");
@@ -136,22 +136,22 @@ public class IndexManager {
 		}
 
 		if (results.size() > 0) {
-			System.out.println(results.size() + " results:\n");
+			Io.out(results.size() + " results:\n");
 			for (int i = 0; i < results.size(); i++) {
 				if (!results.get(i).getTitle().toLowerCase()
 						.contains(term.toLowerCase())) {
-					System.out.println("["
+					Io.out("["
 							+ (entries.indexOf(results.get(i)) + 1) + "]   "
 							+ results.get(i).getTitle()
 							+ " (occurrence in tags)");
 				} else {
-					System.out.println("["
+					Io.out("["
 							+ (entries.indexOf(results.get(i)) + 1) + "]   "
 							+ results.get(i).getTitle());
 				}
 			}
 		} else {
-			System.out.println("No results");
+			Io.out("No results");
 		}
 	}
 
@@ -174,13 +174,13 @@ public class IndexManager {
 			}
 
 			for (int i = start; i < end + 1; i++) {
-				System.out.println("[" + (i + 1) + "]   "
+				Io.out("[" + (i + 1) + "]   "
 						+ entries.get(i).getTitle());
 			}
 		} catch (NumberFormatException e) {
-			System.out.println("Input not a number, listing aborted");
+			Io.out("Input not a number, listing aborted");
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("Input is out of bounds");
+			Io.out("Input is out of bounds");
 		}
 	}
 
@@ -188,11 +188,11 @@ public class IndexManager {
 		try {
 			int index = Integer.parseInt(data.split(" ")[0]) - 1;
 			entries.remove(index);
-			System.out.println("Entry " + (index + 1) + " has been removed");
+			Io.out("Entry " + (index + 1) + " has been removed");
 		} catch (NumberFormatException e) {
-			System.out.println("Input not a number, listing aborted");
+			Io.out("Input not a number, listing aborted");
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("Input is out of bounds");
+			Io.out("Input is out of bounds");
 		}
 	}
 	
@@ -201,22 +201,22 @@ public class IndexManager {
 			int index = Integer.parseInt(data.split(" ")[0]) - 1;
 			showEntry(index);
 		} catch (NumberFormatException e) {
-			System.out.println("Input not a number, listing aborted");
+			Io.out("Input not a number, listing aborted");
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("Input is out of bounds");
+			Io.out("Input is out of bounds");
 		}
 	}
 
 	private void showMem() {
 		Runtime rt = Runtime.getRuntime();
 		long memory = (rt.totalMemory() - rt.freeMemory()) / (1024 * 1024);
-		System.out.println("Using " + memory + "MB of memory");
+		Io.out("Using " + memory + "MB of memory");
 	}
 	
 	private void showEntry(int index) {
 		Entry result = entries.get(index);
 
-		System.out.println("\nTitle:  " + result.getTitle());
+		Io.out("\nTitle:  " + result.getTitle());
 		if (result.getTags().getList().size() > 0) {
 			System.out.print("Tags:   ");
 			for (String tag : result.getTags().getList()) {
@@ -224,12 +224,12 @@ public class IndexManager {
 						.get(result.getTags().getList().size() - 1))) {
 					System.out.print(tag + ", ");
 				} else {
-					System.out.println(tag);
+					Io.out(tag);
 				}
 			}
 		}
-		System.out.println("Folder: " + result.getFolder());
-		System.out.println("Index:  " + result.getIndex());
-		System.out.println("Page:   " + result.getPage());
+		Io.out("Folder: " + result.getFolder());
+		Io.out("Index:  " + result.getIndex());
+		Io.out("Page:   " + result.getPage());
 	}
 }
