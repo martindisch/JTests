@@ -9,6 +9,5 @@ public enum Commands {
 	HELP,
 	LIST,
 	DELETE,
-	EDIT,
 	UNKNOWN
 }

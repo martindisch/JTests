@@ -50,9 +50,6 @@ public class Main {
 		case DELETE:
 			manager.delete(action.getData());
 			break;
-		case EDIT:
-			
-			break;
 		case HELP:
 			displayCommands();
 			break;
@@ -77,7 +74,6 @@ public class Main {
 		System.out
 				.println(" - List [start] [end (optional)] (List entries [start] to [end]");
 		System.out.println(" - Delete [number] (Delete this entry)");
-		System.out.println(" - Edit [number] (Edit this entry)");
 		System.out.println(" - Help (Display this help)");
 	}
 
