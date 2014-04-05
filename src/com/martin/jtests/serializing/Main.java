@@ -47,6 +47,12 @@ public class Main {
 		case LIST:
 			manager.list(action.getData());
 			break;
+		case DELETE:
+			
+			break;
+		case EDIT:
+			
+			break;
 		case HELP:
 			displayCommands();
 			break;
@@ -70,6 +76,8 @@ public class Main {
 				.println(" - Search [part of title or tag] (Search the currently loaded collection)");
 		System.out
 				.println(" - List [start] [end (optional)] (List entries [start] to [end]");
+		System.out.println(" - Delete [number] (Delete this entry)");
+		System.out.println(" - Edit [number] (Edit this entry)");
 		System.out.println(" - Help (Display this help)");
 	}
 

@@ -8,5 +8,7 @@ public enum Commands {
 	SEARCH,
 	HELP,
 	LIST,
+	DELETE,
+	EDIT,
 	UNKNOWN
 }
