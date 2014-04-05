@@ -140,11 +140,13 @@ public class IndexManager {
 			for (int i = 0; i < results.size(); i++) {
 				if (!results.get(i).getTitle().toLowerCase()
 						.contains(term.toLowerCase())) {
-					System.out.println("[" + (entries.indexOf(results.get(i)) + 1) + "]   "
+					System.out.println("["
+							+ (entries.indexOf(results.get(i)) + 1) + "]   "
 							+ results.get(i).getTitle()
 							+ " (occurrence in tags)");
 				} else {
-					System.out.println("[" + (entries.indexOf(results.get(i)) + 1) + "]   "
+					System.out.println("["
+							+ (entries.indexOf(results.get(i)) + 1) + "]   "
 							+ results.get(i).getTitle());
 				}
 			}
@@ -180,7 +182,7 @@ public class IndexManager {
 			System.out.println("No results");
 		}
 	}
-	
+
 	public void list(String data) {
 		String[] parts = data.split(" ");
 		int start = 0;
@@ -191,20 +193,19 @@ public class IndexManager {
 			}
 			start = Integer.parseInt(parts[0]) - 1;
 			if (parts.length > 1) {
-				if (Integer.parseInt(parts[1])  > entries.size()) {
+				if (Integer.parseInt(parts[1]) > entries.size()) {
 					throw new IndexOutOfBoundsException();
 				}
 				end = Integer.parseInt(parts[1]) - 1;
-			}
-			else {
+			} else {
 				end = entries.size() - 1;
 			}
-			
+
 			for (int i = start; i < end + 1; i++) {
 				System.out.println("[" + (i + 1) + "]   "
 						+ entries.get(i).getTitle());
 			}
-			
+
 			System.out.println("\nWhich result do you want to display?");
 			int iResult = Integer.parseInt(sc.nextLine());
 			iResult--;
@@ -226,11 +227,21 @@ public class IndexManager {
 			System.out.println("Folder: " + result.getFolder());
 			System.out.println("Index:  " + result.getIndex());
 			System.out.println("Page:   " + result.getPage());
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("Input not a number, listing aborted");
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Input is out of bounds");
 		}
-		catch (IndexOutOfBoundsException e) {
+	}
+
+	public void delete(String data) {
+		try {
+			int index = Integer.parseInt(data.split(" ")[0]) - 1;
+			entries.remove(index);
+			System.out.println("Entry " + (index + 1) + " has been removed");
+		} catch (NumberFormatException e) {
+			System.out.println("Input not a number, listing aborted");
+		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Input is out of bounds");
 		}
 	}

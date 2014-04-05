@@ -48,7 +48,7 @@ public class Main {
 			manager.list(action.getData());
 			break;
 		case DELETE:
-			
+			manager.delete(action.getData());
 			break;
 		case EDIT:
 			
